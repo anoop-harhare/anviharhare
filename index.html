@@ -1,53 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anvi's Fun World</title>
-    <style>
-        body {
-            background-color: #add8e6; /* Light blue background */
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: #333;
-        }
-        h1 {
-            color: #00008b; /* Dark blue */
-        }
-        .game {
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Anvi's Fun World - Find the Cinnamoroll Game</title>
+  <style>
+    body {
+      background: #e3f2fd;
+      font-family: Arial, sans-serif;
+      color: #1565c0;
+      text-align: center;
+    }
+    h1 {
+      color: #0d47a1;
+    }
+    .game-board {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .card-container {
+      position: relative;
+      width: 110px;
+      height: 160px;
+      perspective: 1000px;
+      display: inline-block;
+    }
+    .card {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: transform 0.8s cubic-bezier(.34,2,.6,1);
+      transform-style: preserve-3d;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #90caf9;
+      border-radius: 18px;
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      background: #fff;
+    }
+    .card-front {
+      background: linear-gradient(135deg, #b3e5fc 55%, #ffffff 100%);
+      border: 2px solid #1565c0;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      font-size: 2.3em;
+      font-weight: bold;
+      background: #fce4ec;
+    }
+    input[type="checkbox"] {
+      display: none;
+    }
+    input[type="checkbox"]:checked + .card {
+      transform: rotateY(180deg);
+    }
+    .winner-message {
+      margin-top: 40px;
+      font-size: 1.5em;
+      color: #2e7d32;
+      display: none;
+    }
+    #found-cinnamoroll:checked ~ .winner-message {
+      display: block;
+      animation: pop 1s;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.85);}
+      55% {transform: scale(1.15);}
+      100% { transform: scale(1);}
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Anvi's Fun World!</h1>
-    <section id="cats">
-        <h2>Cute Cats</h2>
-        <p>Enjoy adorable cat pictures!</p>
-    </section>
-    <section id="pokemons">
-        <h2>Pokémon Adventures</h2>
-        <p>Catch your favorite Pokémon!</p>
-    </section>
-    <section id="cinnamon-rolls">
-        <h2>Cinnamoroll</h2>
-        <p>Sweet treats for everyone!</p>
-    </section>
-    <div class="game">
-        <h2>Click the Fun Images!</h2>
-        <img id="funImage" src="cat_image_url" alt="Fun Image" style="cursor:pointer;" onclick="changeImage()">
+  <h1>Find the Cinnamoroll!</h1>
+  <div class="game-board">
+    <div class="card-container">
+      <input type="checkbox" id="card1">
+      <label class="card" for="card1" tabindex="0">
+        <div class="card-front">❓</div>
+        <div class="card-back">🐱<br>Cat</div>
+      </label>
     </div>
-    <script>
-        const images = [
-            'cat_image_url1',
-            'pokemon_image_url1',
-            'cinnamoroll_image_url1'
-        ];
-
-        function changeImage() {
-            const randomIndex = Math.floor(Math.random() * images.length);
-            document.getElementById('funImage').src = images[randomIndex];
-        }
-    </script>
+    <div class="card-container">
+      <input type="checkbox" id="found-cinnamoroll">
+      <label class="card" for="found-cinnamoroll" tabindex="0">
+        <div class="card-front">❓</div>
+        <div class="card-back" style="color:#42a5f5;">
+          🐶<br>
+          <span style="font-size: 1em;">Cinnamoroll!</span>
+        </div>
+      </label>
+    </div>
+    <div class="card-container">
+      <input type="checkbox" id="card3">
+      <label class="card" for="card3" tabindex="0">
+        <div class="card-front">❓</div>
+        <div class="card-back">⚡<br>Pokémon</div>
+      </label>
+    </div>
+  </div>
+  <div class="winner-message">
+    🎉 Yay! You found Cinnamoroll! 🐶☁️
+  </div>
+  <p style="margin-top:30px;">Click a card to flip and try to find Cinnamoroll!</p>
 </body>
 </html>
