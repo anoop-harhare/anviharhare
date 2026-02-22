@@ -3,9 +3,9 @@ Anvi's Website — hosted on GitHub Pages at **https://anoop-harhare.github.io/a
 
 ---
 
-## Squarespace DNS Configuration
+## Squarespace DNS Configuration — Migrate from Squarespace to GitHub Pages
 
-The domain `www.anviharhare.com` is registered in Squarespace. Follow these steps to point it to GitHub Pages.
+Your domain `anviharhare.com` is registered in Squarespace and currently has DNS records pointing to Squarespace's servers. You need to **delete** those records and **replace** them with GitHub Pages records.
 
 ### Step 1 — Open Squarespace DNS Settings
 
@@ -16,43 +16,56 @@ The domain `www.anviharhare.com` is registered in Squarespace. Follow these step
 
 ---
 
-### Step 2 — Add a CNAME record for `www`
+### Step 2 — Delete all existing DNS records
 
-This makes `www.anviharhare.com` resolve to GitHub Pages.
+You currently have these records — **delete every one of them**:
 
-| Type  | Host | Data / Points to              | TTL        |
-|-------|------|-------------------------------|------------|
-| CNAME | www  | anoop-harhare.github.io       | Automatic  |
+| Type  | Host | Current value                                                                          |
+|-------|------|----------------------------------------------------------------------------------------|
+| A     | @    | 198.49.23.144                                                                          |
+| A     | @    | 198.49.23.145                                                                          |
+| A     | @    | 198.185.159.144                                                                        |
+| A     | @    | 198.185.159.145                                                                        |
+| CNAME | www  | ext-sq.squarespace.com                                                                 |
+| HTTPS | @    | 1. alpn="h2,http/1.1" ipv4hint="198.185.159.144,198.185.159.145,198.49.23.144,198.49.23.145" |
 
-> **Important:** The value must end with a `.` in some DNS editors. If Squarespace requires it, enter `anoop-harhare.github.io.` (with the trailing dot).
-
----
-
-### Step 3 — Add A records for the apex domain (recommended)
-
-These make the bare domain `anviharhare.com` (without `www`) also work and redirect to `www.anviharhare.com`.
-
-Add **four** A records, all with `Host = @` (or leave the host field blank):
-
-| Type | Host | Data (IP Address)  | TTL       |
-|------|------|--------------------|-----------|
-| A    | @    | 185.199.108.153    | Automatic |
-| A    | @    | 185.199.109.153    | Automatic |
-| A    | @    | 185.199.110.153    | Automatic |
-| A    | @    | 185.199.111.153    | Automatic |
+Click the **delete / trash icon** next to each record and confirm the deletion.
 
 ---
 
-### Step 4 — Verify the custom domain in GitHub
+### Step 3 — Add the GitHub Pages A records for the apex domain
+
+Add **four** new A records, all with `Host = @`:
+
+| Type | Host | Value           | TTL       |
+|------|------|-----------------|-----------|
+| A    | @    | 185.199.108.153 | Automatic |
+| A    | @    | 185.199.109.153 | Automatic |
+| A    | @    | 185.199.110.153 | Automatic |
+| A    | @    | 185.199.111.153 | Automatic |
+
+---
+
+### Step 4 — Add the GitHub Pages CNAME record for `www`
+
+Add **one** new CNAME record:
+
+| Type  | Host | Value                   | TTL       |
+|-------|------|-------------------------|-----------|
+| CNAME | www  | anoop-harhare.github.io | Automatic |
+
+---
+
+### Step 5 — Verify the custom domain in GitHub
 
 1. Go to the repository **Settings → Pages**.
-2. Under **Custom domain**, make sure `www.anviharhare.com` is entered and saved.
-3. Check the **Enforce HTTPS** box once the certificate has been issued (may take up to 24 hours after DNS propagates).
+2. Under **Custom domain**, confirm `www.anviharhare.com` is entered and saved.
+3. Check **Enforce HTTPS** once the SSL certificate has been issued (can take up to 24 hours after DNS propagates).
 
-> The `CNAME` file at the root of this repository already contains `www.anviharhare.com`, so GitHub Pages is already configured on the repository side. Only the Squarespace DNS records above need to be added.
+> The `CNAME` file at the root of this repository already contains `www.anviharhare.com`, so the GitHub Pages side is fully set up — only the Squarespace DNS changes above are needed.
 
 ---
 
-### Step 5 — Wait for DNS propagation
+### Step 6 — Wait for DNS propagation
 
-DNS changes can take anywhere from a few minutes to 48 hours to propagate worldwide. You can check progress at [dnschecker.org](https://dnschecker.org) by looking up `www.anviharhare.com` as a CNAME record.
+DNS changes typically take a few minutes to a few hours, but can take up to 48 hours to fully propagate. You can check progress at [dnschecker.org](https://dnschecker.org) — search for `www.anviharhare.com` as a CNAME record and confirm it shows `anoop-harhare.github.io`.
