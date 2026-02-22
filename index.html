@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anvi's Fun World</title>
+    <style>
+        body {
+            background-color: #add8e6; /* Light blue background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #333;
+        }
+        h1 {
+            color: #00008b; /* Dark blue */
+        }
+        .game {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Anvi's Fun World!</h1>
+    <section id="cats">
+        <h2>Cute Cats</h2>
+        <p>Enjoy adorable cat pictures!</p>
+    </section>
+    <section id="pokemons">
+        <h2>Pokémon Adventures</h2>
+        <p>Catch your favorite Pokémon!</p>
+    </section>
+    <section id="cinnamon-rolls">
+        <h2>Cinnamon Rolls</h2>
+        <p>Sweet treats for everyone!</p>
+    </section>
+    <div class="game">
+        <h2>Click the Fun Images!</h2>
+        <img id="funImage" src="cat_image_url" alt="Fun Image" style="cursor:pointer;" onclick="changeImage()">
+    </div>
+    <script>
+        const images = [
+            'cat_image_url1',
+            'pokemon_image_url1',
+            'cinnamon_roll_image_url1'
+        ];
+
+        function changeImage() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            document.getElementById('funImage').src = images[randomIndex];
+        }
+    </script>
+</body>
+</html>
