@@ -1,0 +1,55 @@
+/** Blue Color Theme */
+body {
+    background-color: #e0f7fa; /* Light blue background */
+    color: #0d47a1; /* Dark blue text */
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #00838f; /* Medium blue header */
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+h1, h2, h3 {
+    color: #004d40; /* Darker blue for headings */
+}
+
+a {
+    color: #006064; /* Link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+
+    header {
+        padding: 15px; /* Reduced padding for mobile */
+    }
+
+    h1 {
+        font-size: 24px; /* Smaller h1 size on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 13px; /* Further reduced font size */
+    }
+
+    header {
+        padding: 10px; /* Further reduced padding */
+    }
+
+    h1 {
+        font-size: 20px; /* Further reduced h1 size */
+    }
+}
