@@ -10,12 +10,25 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
+            background-color: #fce4ec;
         }
         h1 {
+            margin-bottom: 10px;
+            text-align: center;
+            color: #ad1457;
+        }
+        .instructions {
             margin-bottom: 20px;
+            font-size: 16px;
+            color: #6a1b9a;
+            text-align: center;
+            max-width: 360px;
+            line-height: 1.5;
         }
         .grid {
             display: grid;
@@ -27,6 +40,7 @@
             width: 100px;
             height: 150px;
             perspective: 1000px;
+            cursor: pointer;
         }
         .card-inner {
             position: absolute;
@@ -47,9 +61,11 @@
             justify-content: center;
             align-items: center;
             font-size: 40px;
+            border-radius: 8px;
         }
         .card-front {
-            background-color: #f0f0f0;
+            background-color: #f8bbd0;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
         }
         .card-back {
             background-color: #fff;
@@ -60,21 +76,34 @@
             width: 80%;
             height: auto;
         }
+        @media (max-width: 400px) {
+            .card {
+                width: 80px;
+                height: 120px;
+            }
+            .card-front, .card-back {
+                font-size: 30px;
+            }
+            .instructions {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>Welcome to Anvi's World</h1>
+    <p class="instructions">🌸 Flip the cards to see what's hidden!<br>Can you find the special Cinnamoroll? 🐾</p>
     <div class="grid">
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">😊</div>
-                <div class="card-back"><img class="gif" src="https://media.giphy.com/media/Vuw9m5wXviFIQ/giphy.gif" alt="Rickroll GIF"></div>
+                <div class="card-back"><img class="gif" src="https://media.giphy.com/media/Vuw9m5wXviFIQ/giphy.gif" alt="Rickroll GIF" width="80" height="80"></div>
             </div>
         </div>
         <div class="card"><div class="card-inner"><div class="card-front">🐱</div><div class="card-back">😄</div></div></div>
         <div class="card"><div class="card-inner"><div class="card-front">🌼</div><div class="card-back">🌟</div></div></div>
         <div class="card"><div class="card-inner"><div class="card-front">🎈</div><div class="card-back">💖</div></div></div>
-        <div class="card"><div class="card-inner"><div class="card-front">🍀</div><div class="card-back">🐶</div></div></div>
+        <div class="card"><div class="card-inner"><div class="card-front">🍀</div><div class="card-back"><img class="gif" src="https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif" alt="Cinnamoroll GIF" width="80" height="80"></div></div></div>
         <div class="card"><div class="card-inner"><div class="card-front">🦄</div><div class="card-back">🍭</div></div></div>
         <div class="card"><div class="card-inner"><div class="card-front">🍓</div><div class="card-back">🐸</div></div></div>
         <div class="card"><div class="card-inner"><div class="card-front">🌈</div><div class="card-back">🍿</div></div></div>
