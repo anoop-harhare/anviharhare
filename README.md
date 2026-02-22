@@ -46,6 +46,12 @@ Add **four** new A records, all with `Host = @`:
 
 ---
 
+### Step 3b — Do NOT add a new HTTPS record
+
+You do **not** need to add an HTTPS (SVCB) record for GitHub Pages. The old HTTPS record you deleted in Step 2 was specific to Squarespace's CDN. GitHub Pages automatically provisions and manages an SSL/TLS certificate for your custom domain — no HTTPS DNS record is required on your end.
+
+---
+
 ### Step 4 — Add the GitHub Pages CNAME record for `www`
 
 Add **one** new CNAME record:
