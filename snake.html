@@ -323,7 +323,7 @@
         overlay.classList.add('hidden');
         state = 'playing';
         clearInterval(loop);
-        loop = setInterval(tick, 120);
+        loop = setInterval(tick, 180);
     }
 
     /* ── Pause / Resume ── */
@@ -338,7 +338,7 @@
         } else if (state === 'paused') {
             overlay.classList.add('hidden');
             state = 'playing';
-            loop = setInterval(tick, 120);
+            loop = setInterval(tick, 180);
         }
     }
 
