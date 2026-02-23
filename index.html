@@ -138,8 +138,23 @@
             document.querySelectorAll('.card').forEach(function(card) {
                 card.addEventListener('click', function() {
                     const inner = card.querySelector('.card-inner');
-                    if (inner) { inner.classList.toggle('flipped'); }
-                    if (card.id === 'rickroll-card') {
+                    if (!inner) return;
+
+                    // Check if this card is already flipped
+                    const isCurrentlyFlipped = inner.classList.contains('flipped');
+
+                    // Close all cards first
+                    document.querySelectorAll('.card-inner').forEach(function(cardInner) {
+                        cardInner.classList.remove('flipped');
+                    });
+
+                    // If the clicked card wasn't flipped, flip it now
+                    if (!isCurrentlyFlipped) {
+                        inner.classList.add('flipped');
+                    }
+
+                    // Handle rickroll audio
+                    if (card.id === 'rickroll-card' && !isCurrentlyFlipped) {
                         audio.currentTime = 0;
                         audio.play().catch(function(e) { console.log('Audio play failed:', e); });
                     }
